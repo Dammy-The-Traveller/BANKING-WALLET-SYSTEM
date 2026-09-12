@@ -6,28 +6,31 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Customer customer = new Customer( 
-                "CUS001", //  unique ID.
-                "Damilare Adebesin", //  full name.
-                "damilare@example.com", //  email address.
-                "08012345678" //  phone number.
+        Customer customer1 = new Customer( 
+                "Damilare Adebesin", 
+                "damilare@example.com", 
+                "08012345678" 
         ); 
 
+        
+        Customer customer2 = new Customer( 
+                "John Doe", 
+                "john@example.com", 
+                "08098765432" 
+        );
         System.out.println("Customer Information");
 
         System.out.println("--------------------"); 
 
-        System.out.println("Customer ID: " + customer.getCustomerId()); 
+        System.out.println("Customer 1 ID: " + customer1.getCustomerId()); // Displays the automatically generated first customer ID.
 
-        System.out.println("Full Name: " + customer.getFullName()); 
+        System.out.println("Customer 1 Name: " + customer1.getFullName()); // Displays the first customer's name.
 
-        System.out.println("Email: " + customer.getEmail()); 
+        System.out.println(); // Prints a blank line to separate the customers.
 
-        System.out.println("Phone: " + customer.getPhoneNumber()); 
+        System.out.println("Customer 2 ID: " + customer2.getCustomerId()); // Displays the automatically generated second customer ID.
 
-        customer.setEmail("newemail@example.com"); 
-
-        System.out.println("\nUpdated Email: " + customer.getEmail()); 
+        System.out.println("Customer 2 Name: " + customer2.getFullName()); 
 
     } 
 
