@@ -39,7 +39,7 @@ public class Customer {
 
         this.phoneNumber = phoneNumber.trim(); 
 
-    } // Ends the Customer constructor.
+    } 
 
     private static String generateCustomerId() {
 
