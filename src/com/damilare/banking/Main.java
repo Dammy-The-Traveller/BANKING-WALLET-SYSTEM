@@ -1,50 +1,55 @@
-package com.damilare.banking; 
-import com.damilare.banking.model.Account;
-import com.damilare.banking.model.Customer; 
+package com.damilare.banking;
 
-public class Main { 
+import com.damilare.banking.model.Account;
+import com.damilare.banking.model.Bank;
+import com.damilare.banking.model.Customer;
+
+public class Main {
 
     public static void main(String[] args) {
 
-        Customer customer = new Customer( 
+        Bank bank = new Bank();
 
-                "Damilare Adebesin", 
+        Customer customer1 = new Customer(
+                "Damilare Adebesin",
+                "damilare@example.com",
+                "08012345678"
+        );
 
-                "damilare@example.com", 
+        Customer customer2 = new Customer(
+                "John Doe",
+                "john@example.com",
+                "08098765432"
+        );
 
-                "08012345678" 
+        Account account1 = new Account(customer1);
+        Account account2 = new Account(customer2);
 
-        ); 
+        bank.addCustomer(customer1);
+        bank.addCustomer(customer2);
 
-        Account account = new Account(customer);
+        bank.addAccount(account1);
+        bank.addAccount(account2);
 
-        System.out.println("================================"); 
+        System.out.println("Customers: " + bank.getCustomers().size());
+        System.out.println("Accounts: " + bank.getAccounts().size());
 
-        System.out.println("       ACCOUNT INFORMATION       ");
+        System.out.println("\nCustomer List:");
 
-        System.out.println("================================"); 
+        for (Customer customer : bank.getCustomers()) {
+            System.out.println(
+                    customer.getCustomerId() + " - " +
+                    customer.getFullName()
+            );
+        }
 
-        System.out.println("Customer ID: " + customer.getCustomerId()); 
+        System.out.println("\nAccount List:");
 
-        System.out.println("Account Number: " + account.getAccountNumber());
-
-        System.out.println("Account Holder: " + account.getOwner().getFullName()); 
-
-        System.out.println("Balance: " + account.getBalance());
-
-        System.out.println("Status: " + account.getStatus()); 
-
-        account.block(); 
-
-        System.out.println("\nAfter blocking account:"); 
-        System.out.println("Status: " + account.getStatus()); 
-
-        account.activate();
-
-        System.out.println("\nAfter activating account:");
-
-        System.out.println("Status: " + account.getStatus()); 
-
-    } 
-
-} 
+        for (Account account : bank.getAccounts()) {
+            System.out.println(
+                    account.getAccountNumber() + " - " +
+                    account.getOwner().getFullName()
+            );
+        }
+    }
+}
