@@ -32,22 +32,80 @@ public class Main {
         bank.addAccount(account2);
 
         System.out.println("Customers: " + bank.getCustomers().size());
+
         System.out.println("Accounts: " + bank.getAccounts().size());
 
-        System.out.println("\nCustomer List:");
+        System.out.println("\nCustomer Lookup:");
 
-        for (Customer customer : bank.getCustomers()) {
+        Customer foundCustomer = bank.findCustomer(
+                customer1.getCustomerId()
+        );
+
+        if (foundCustomer != null) {
+
             System.out.println(
-                    customer.getCustomerId() + " - " +
+                    "Customer ID: " +
+                    foundCustomer.getCustomerId()
+            );
+
+            System.out.println(
+                    "Name: " +
+                    foundCustomer.getFullName()
+            );
+
+            System.out.println(
+                    "Email: " +
+                    foundCustomer.getEmail()
+            );
+
+            System.out.println(
+                    "Phone: " +
+                    foundCustomer.getPhoneNumber()
+            );
+        }
+
+        System.out.println("\nAccount Lookup:");
+
+        Account foundAccount = bank.findAccount(
+                account1.getAccountNumber()
+        );
+
+        if (foundAccount != null) {
+
+            System.out.println(
+                    "Account found: " +
+                    foundAccount.getAccountNumber()
+            );
+
+            System.out.println(
+                    "Owner: " +
+                    foundAccount.getOwner().getFullName()
+            );
+
+            System.out.println(
+                    "Balance: " +
+                    foundAccount.getBalance()
+            );
+        }
+
+        System.out.println("\nAll Customers:");
+
+        for (Customer customer : bank.getCustomers().values()) {
+
+            System.out.println(
+                    customer.getCustomerId() +
+                    " - " +
                     customer.getFullName()
             );
         }
 
-        System.out.println("\nAccount List:");
+        System.out.println("\nAll Accounts:");
 
-        for (Account account : bank.getAccounts()) {
+        for (Account account : bank.getAccounts().values()) {
+
             System.out.println(
-                    account.getAccountNumber() + " - " +
+                    account.getAccountNumber() +
+                    " - " +
                     account.getOwner().getFullName()
             );
         }
