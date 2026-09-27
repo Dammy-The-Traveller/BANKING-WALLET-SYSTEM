@@ -1,7 +1,9 @@
 package com.damilare.banking.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Bank {
@@ -78,4 +80,27 @@ public class Bank {
     public Map<String, Account> getAccounts() {
         return Collections.unmodifiableMap(accounts);
     }
+
+    public List<Customer> searchCustomersByName(String name) {
+
+    if (name == null || name.isBlank()) {
+        throw new IllegalArgumentException(
+                "Search name cannot be null or blank."
+        );
+    }
+
+    List<Customer> matches = new ArrayList<>();
+
+    for (Customer customer : customers.values()) {
+
+        if (customer.getFullName()
+                .toLowerCase()
+                .contains(name.toLowerCase())) {
+
+            matches.add(customer);
+        }
+    }
+
+    return Collections.unmodifiableList(matches);
+}
 }

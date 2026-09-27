@@ -22,6 +22,18 @@ public class Main {
                 "08098765432"
         );
 
+        Customer customer3 = new Customer(
+        "Damilare David",
+        "david@example.com",
+        "08055555555"
+);
+
+Customer customer4 = new Customer(
+        "Sarah Williams",
+        "sarah@example.com",
+        "08044444444"
+);
+
         Account account1 = new Account(customer1);
         Account account2 = new Account(customer2);
 
@@ -30,6 +42,9 @@ public class Main {
 
         bank.addAccount(account1);
         bank.addAccount(account2);
+
+        bank.addCustomer(customer3);
+bank.addCustomer(customer4);
 
         System.out.println("Customers: " + bank.getCustomers().size());
 
@@ -109,5 +124,20 @@ public class Main {
                     account.getOwner().getFullName()
             );
         }
+
+
+        System.out.println("\nSearch Customers:");
+
+for (Customer customer : bank.searchCustomersByName("damilare")) {
+
+    System.out.println(
+            customer.getCustomerId() +
+            " - " +
+            customer.getFullName()
+    );
+}
     }
+
+
+    
 }
