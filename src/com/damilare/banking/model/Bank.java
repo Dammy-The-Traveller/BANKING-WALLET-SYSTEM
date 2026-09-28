@@ -103,4 +103,28 @@ public class Bank {
 
     return Collections.unmodifiableList(matches);
 }
+
+
+public List<Customer> searchCustomersByEmail(String email) {
+
+    if (email == null || email.isBlank()) {
+        throw new IllegalArgumentException(
+                "Search email cannot be null or blank."
+        );
+    }
+
+    List<Customer> matches = new ArrayList<>();
+
+    for (Customer customer : customers.values()) {
+
+        if (customer.getEmail()
+                .toLowerCase()
+                .contains(email.toLowerCase())) {
+
+            matches.add(customer);
+        }
+    }
+
+    return Collections.unmodifiableList(matches);
+}
 }

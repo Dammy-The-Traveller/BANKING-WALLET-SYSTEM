@@ -18,7 +18,7 @@ public class Main {
 
         Customer customer2 = new Customer(
                 "John Doe",
-                "john@example.com",
+                "DAVID@EXAMPLE.COM",
                 "08098765432"
         );
 
@@ -136,8 +136,18 @@ for (Customer customer : bank.searchCustomersByName("damilare")) {
             customer.getFullName()
     );
 }
+
+
+for (Customer customer : bank.searchCustomersByEmail("davids@example.com")) {
+
+    System.out.println(
+            customer.getCustomerId() +
+            " - " +
+            customer.getEmail()
+    );
+}
+
+
+
     }
-
-
-    
 }
